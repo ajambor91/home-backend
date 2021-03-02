@@ -19,3 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/mail','MailController@sendMail');
+
+Route::prefix('results')->group(function(){
+    Route::get('/get', 'ResultController@getResults');
+    Route::post('/add', 'ResultController@addResult');
+});

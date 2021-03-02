@@ -20,13 +20,12 @@ class Info extends Mailable
      *
      * @return void
      */
-    public function __construct($mail, $message, $name, $subject, $phone = null)
+    public function __construct($mail, $message, $name, $phone = null)
     {
         $this->mail = $mail;
         $this->message = $message;
         $this->name = $name;
         $this->phone = $phone;
-        $this->subject = $subject;
     }
 
     /**
@@ -38,7 +37,7 @@ class Info extends Mailable
     {
         return $this->to('dev@adamjambor.pl')
                     ->replyTo($this->mail)
-                    ->subject($this->subject)
+                    ->subject('Wiadomość od: '. $this->name)
                     ->view('raw')
                     ->with(['textMessage' => $this->buildMessage()]);
     }

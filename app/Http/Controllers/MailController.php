@@ -21,11 +21,10 @@ class MailController extends Controller{
         $email = $request->email;
         $message = $request->message;
         $name = $request->name;
-        $subject = $request->subject;
         $phone = $request->phone;
 
         try{
-            Mail::send(new Info($email, $message, $name, $subject, $phone));
+            Mail::send(new Info($email, $message, $name, $phone));
         }catch (\Exception $exception){
             Log::critical('mail not send', [$exception]);
             return response()->json(['status' => false], 500);
@@ -45,8 +44,7 @@ class MailController extends Controller{
             'email' => 'required|email',
             'name' => 'required|min:3',
             'message' => 'required|min:3',
-            'subject' => 'required|min:3',
-            'phone' => 'integer|min:9'
+            'phone' => 'nullable|digits:9'
         ]);
         if($validator->fails()){
             return false;

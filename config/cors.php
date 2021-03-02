@@ -15,11 +15,11 @@ return [
     |
     */
 
-    'paths' => ['api/*'],
+    'paths' => ['*'],
 
-    'allowed_methods' => ['*'],
+    'allowed_methods' => ['POST'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => ['https://adamjambor.pl', 'http://localhost:4200'],
 
     'allowed_origins_patterns' => [],
 
