@@ -20,6 +20,13 @@ class Result extends Migration
             $table->dateTime('created_at');
             $table->dateTime('updated_at');
         });
+        Schema::create('app', function($table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('password', 60);
+            $table->dateTime('created_at');
+            $table->dateTime('updated_at');
+        });
     }
 
     /**
@@ -30,5 +37,6 @@ class Result extends Migration
     public function down()
     {
         Schema::drop('results');
+        Schema::drop('app');
     }
 }
